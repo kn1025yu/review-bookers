@@ -1,37 +1,41 @@
 <h1>books</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @books.each do |book| %>
-        <td><%= book.title %></td>
-        <td><%= book.body %></td>
-        <td><%= link_to "Show", book_path(book) %></td>
-        <td><%= link_to "Edit", edit_book_path(book) %></td>
-        <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+<div class="container">
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @books.each do |book| %>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+            <td><%= link_to "Show", book_path(book) %></td>
+            <td><%= link_to "Edit", edit_book_path(book) %></td>
+            <td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <table>
+      <h2>New Book</h2>
+      <%= form_with model:@book, local:true do |f| %>
+        <tr>
+          <p>Title</p>
+          <%= f.text_field :title, placeholder: "タイトル" %>
+        </tr>
+        <tr>
+          <p>Body</p>
+          <%= f.text_area :body, placeholder: "本文" %>
+        </tr>
+        <tr>
+          <th><%= f.submit '投稿' %></th>
+        </tr>
       <% end %>
-    </tr>
-  </tbody>
-</table>
-<table>
-  <h2>New Book</h2>
-  <%= form_with model:@book, local:true do |f| %>
-    <tr>
-      <p>Title</p>
-      <%= f.text_field :title, placeholder: "タイトル" %>
-    </tr>
-    <tr>
-      <p>Body</p>
-      <%= f.text_area :body, placeholder: "本文" %>
-    </tr>
-    <tr>
-      <th><%= f.submit '投稿' %></th>
-    </tr>
-  <% end %>
-</table>
+    </table>
+  </div>
+</div>
