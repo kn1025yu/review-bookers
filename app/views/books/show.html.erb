@@ -1,9 +1,20 @@
-<table>
-  <thead>
-    <tr>
-      <th><%= @book.title %></th>
-      <th><%= @book.body %></th>
-      <th></th>
-    </tr>
-  </thead>
-</table>
+<div class="container">
+  <div class="row">
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
